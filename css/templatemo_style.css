@@ -407,3 +407,19 @@ footer {
         width: 60px;
     }
 }
+
+@media (max-width: 400px) {
+    #templatemo_contact header {
+        display: flex;
+        justify-content: center; /* Center horizontally */
+        align-items: center; /* Center vertically */
+        text-align: center; /* Center text if it's multiline */
+    }
+    
+    #templatemo_contact header h1 {
+        font-size: 35px;
+        line-height: normal; /* You can adjust this based on your design */
+        margin: 0; /* Removes default margins */
+        height: 60px;
+    }
+}
