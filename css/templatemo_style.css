@@ -165,7 +165,7 @@ nav.main-menu a:link, nav.main-menu a:hover, nav.main-menu a:focus, nav.main-men
     /*background:  url(../images/.jpg) fixed;*/
     background-size: cover;
     min-height: 100vh;
-    opacity: 50%;
+    opacity: 70%;
     padding-bottom: 130px;
     color: #fff;
 }
