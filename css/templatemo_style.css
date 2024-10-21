@@ -146,6 +146,7 @@ nav.main-menu a:link, nav.main-menu a:hover, nav.main-menu a:focus, nav.main-men
     right: 100px;
     text-align: center;
 }
+
 .show-menu a:hover, .show-menu a {
     font: normal normal 100 100px/70px 'Fira Sans', sans-serif;
     border: 1px solid rgba(37,58,68,.15);
@@ -160,15 +161,31 @@ nav.main-menu a:link, nav.main-menu a:hover, nav.main-menu a:focus, nav.main-men
     outline: none;
 }
 /***** Home *****/
+/***** Home *****/
 #templatemo_home {
-    background: #154558 url(../images/top-plastic-surgery-trends-2019-lede.webp ) fixed;
-    /*background:  url(../images/.jpg) fixed;*/
-    background-size: cover;
+    position: relative; /* Ensure the pseudo-element stays within the bounds of the section */
+    background: none; /* Remove the background from the main element */
     min-height: 100vh;
-    opacity: 70%;
     padding-bottom: 130px;
     color: #fff;
 }
+
+#templatemo_home::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url(../images/top-plastic-surgery-trends-2019-lede.webp) fixed;
+    background-size: cover;
+    opacity: 0.5; /* Set opacity for the background image */
+    z-index: -1; /* Ensure the background is behind the content */
+}
+em {
+    color: #333;
+}
+
 #templatemo_home .templatemo_home_inner_wapper {
     width: 100%;
     max-width: 500px;
@@ -214,39 +231,86 @@ nav.main-menu a:link, nav.main-menu a:hover, nav.main-menu a:focus, nav.main-men
 /***** Features *****/
 #templatemo_features {
     background: #455a64 url(../images/pattern_bg.png) fixed;
-    /* padding-bottom: 130px; */
 }
+
+
 #templatemo_features p {
     padding-bottom: 30px;
     text-align: center;
 }
+
 #templatemo_features .feature-box {
     transition: all .5s;
     background: transparent;
-    padding: 40px 0 40px 0;
-    margin-bottom: 0px;
-    margin-top: 0px;
+    padding: 40px 0;
+    margin: 0;
+    height: 400px; /* Set all boxes to the same height (adjust as needed) */
+    overflow: hidden; /* Hide overflowed content */
+
 }
-#templatemo_features .feature-box:hover {
-    padding: 0;
-    color: #fff;
-}
-#templatemo_features .feature-box .feature-box-inner {
+
+#templatemo_features .feature-box-inner {
+    position: relative; /* Important for the ::before element */
     box-shadow: inset 0px 0px 0 10px #cecece;
     border-bottom: 10px solid #cecece;
     border-top: 10px solid #cecece;
-    transition: all .5s;
     background: #fff;
     padding: 20px;
     margin: auto;
+    transition: all .5s;
+    z-index: 1; /* Ensure the content stays above the background */ 
 }
-#templatemo_features .feature-box:hover .feature-box-inner {
-    box-shadow: inset 0px 0px 0px 0px #cecece;
-    border-bottom: 10px solid #3d799f;
-    border-top: 10px solid #3d799f;
-    padding: 60px 20px 60px 20px;
-    background: #3399cc;
+
+/* Background images for each feature-box based on position */
+#templatemo_features .feature-box:nth-child(1) .feature-box-inner::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url(../images/hyaluronic\ acid\ treatment.jpg) no-repeat center center;
+    background-size: cover;
+    opacity: 0.5; /* Adjust opacity */
+    z-index: -1; /* Behind the content */}
+
+#templatemo_features .feature-box:nth-child(2) .feature-box-inner::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url(../images/wrinkle\ treatment.jpg) no-repeat center center;
+    background-size: cover;
+    opacity: 0.5;
+    z-index: -1;
 }
+#templatemo_features .feature-box:nth-child(3) .feature-box-inner::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url(../images/laser\ treatment.jpg) no-repeat center center;
+    background-size: cover;
+    opacity: 0.5;
+    z-index: -1;
+}
+#templatemo_features .feature-box:nth-child(4) .feature-box-inner::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url(../images/cat-eye\ treatment.jpg) no-repeat center center;
+    background-size: cover;
+    opacity: 0.5;
+    z-index: -1;
+}
+
 #templatemo_features .feature-box p {
     max-width: 250px;
     min-height: 260px;
@@ -254,64 +318,45 @@ nav.main-menu a:link, nav.main-menu a:hover, nav.main-menu a:focus, nav.main-men
     padding-top: 30px;
     font-size: 18px;
     margin: auto;
+    z-index: 2; /* Ensure the text is above the background image */
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    font-weight: initial;
 }
+
 #templatemo_features .feature-box .feature-box-icon {
-    border-radius: 0px;
     text-align: center;
     padding-top: 50px;
     font-size: 56px;
-    color:#233842;
+    color: #233842;
 }
-/***** Download *****/
-#templatemo_download { 
-    background: url(../images/download_background.jpg) fixed;
+
+/* Transition for smooth effect */
+#templatemo_features .feature-box {
+    transition: transform 0.5s ease-in-out, box-shadow 0.5s ease-in-out; /* Adjusted timing for smoother transition */
+    position: relative; /* Ensure it maintains its position */
+    cursor: default; /* Prevent cursor from changing to pointer */
 }
-#templatemo_download h2 {
-    font: normal normal 100 100px/150px 'Fira Sans', sans-serif;
-    text-align: center;
-    color: #fff;
+
+/* Hover effect */
+#templatemo_features .feature-box:hover {
+    transform: scale(1.1); /* Slightly enlarge the box on hover to allow overlap */
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3); /* Add a more pronounced shadow on hover */
+    color: inherit; /* Keep text color unchanged */
+    z-index: 2;
 }
-#templatemo_download p {
-    text-align: center;
-    color: #fff;
+
+/* Optional: If you want the inner box to also have a shadow */
+#templatemo_features .feature-box .feature-box-inner {
+    transition: box-shadow 0.5s ease-in-out; /* Transition for the inner box shadow */
 }
-#templatemo_download a {
-    margin: 50px auto 100px auto;
-    display: block;
-    width: 260px;
+
+#templatemo_features .feature-box:hover .feature-box-inner {
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2); /* Subtle shadow on hover */
 }
-#templatemo_download .templatemo_download_text_wapper {
-    width: 100%;
-    max-width: 550px;
-    margin: auto;
-}
-/***** Element *****/
-#templatemo_element .container {
-    background-color: #fff;
-    margin-top: 40px;
-    margin-bottom: 80px;
-    padding-bottom: 40px;
-    border-radius: 5px;
-}
-#templatemo_element header h1 { color: #000;}
-#templatemo_element #element-icon-wapper {
-    overflow: hidden;
-    border-radius: 5px;
-}
-#templatemo_element #element-icon-wapper > div {
-    background-color: rgba(0,0,0,.05);
-    padding-bottom: 5px;
-    padding-top: 5px;
-    text-align: center;
-    line-height: 40px;
-    font-size: 25px;
-}
-#templatemo_element #element-icon-wapper > div:hover {
-    transition: .5s;
-    background-color: rgba(0,0,0,.2);
-}
-#templatemo_element #element-icon-wapper a { color: #000;}
-#templatemo_element #img-grid-wapper > div { padding: 5px;}
+
+
 /***** Contact *****/
 #templatemo_contact {
     background: #455a64 url(../images/pattern_bg.png) fixed;
@@ -408,6 +453,7 @@ footer {
     }
 }
 
+
 @media (max-width: 400px) {
     #templatemo_contact header {
         display: flex;
@@ -422,4 +468,8 @@ footer {
         margin: 0; /* Removes default margins */
         height: 60px;
     }
+}
+
+li {
+    background: url(../images/pattern_bg.png);
 }
